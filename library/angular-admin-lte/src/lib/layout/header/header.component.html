@@ -1,0 +1,20 @@
+<header #headerElement class="main-header">
+  <a [routerLink]="logoLink" class="logo">
+    <span class="logo-mini" *ngIf="headerLogoMiniComponent"><ng-template [ngTemplateOutlet]="headerLogoMiniComponent.templateRef"></ng-template></span>
+    <span class="logo-lg" *ngIf="headerLogoComponent"><ng-template [ngTemplateOutlet]="headerLogoComponent.templateRef"></ng-template></span>
+  </a>
+  <nav class="navbar navbar-static-top">
+    <a *ngIf="isSidebarLeftToggle" #sidebarLeftToggleElement href="#" class="sidebar-toggle {{sidebarLeftToggleIconClasses ? 'sidebar-toggle-custom-icon' : ''}}">
+      <span class="sr-only">Toggle navigation</span>
+      <ng-container *ngIf="sidebarLeftToggleIconClasses">
+        <i [class]="sidebarLeftToggleIconClasses"></i>
+      </ng-container>
+    </a>
+    <div *ngIf="isSidebarRightToggle" class="sidebar-right-toggle">
+      <a #sidebarRightToggleElement href="#">
+        <i [class]="sidebarRightToggleIconClasses ? sidebarRightToggleIconClasses : 'fa fa-gears'"></i>
+      </a>
+    </div>
+    <ng-content></ng-content>
+  </nav>
+</header>
